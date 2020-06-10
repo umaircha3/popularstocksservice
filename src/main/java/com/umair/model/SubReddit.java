@@ -1,8 +1,8 @@
 package com.umair.model;
 
 public enum SubReddit {
-	wallstreetbets("Wall Street Bets"),
-	pennystocks("Penny Stocks");
+	pennystocks("Penny Stocks"),
+	wallstreetbets("Wall Street Bets");
 	
 	SubReddit(String string) {
 	}

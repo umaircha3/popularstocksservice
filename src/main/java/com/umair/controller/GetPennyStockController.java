@@ -29,14 +29,31 @@ public class GetPennyStockController {
 
 	private static final Logger logger = LoggerFactory.getLogger(GetPennyStockController.class);
 
-	@GetMapping("/getpennystocklist")
-	public Map<String, Integer> getPennyStockList(DateRanges dateRange, SubReddit subreddit) {
+	@GetMapping("/getFrequentlyMentionedStocksInTitle")
+	public Map<String, Integer> getFrequentlyMentionedStocksInTitle(DateRanges dateRange, SubReddit subreddit) {
 		logger.debug("Date range passed in is: " + dateRange.toString());
 		System.out.println("Date range passed in is: " + dateRange.toString());
 
 		return getStockService.getStockTitleCountMap(dateRange, subreddit);
 	}
 
+	@GetMapping("/getFrequentlyMentionedStocksInComments")
+	public Map<String, Integer> getFrequentlyMentionedStocksInComments(DateRanges dateRange, SubReddit subreddit) {
+		logger.debug("Date range passed in is: " + dateRange.toString());
+		System.out.println("Date range passed in is: " + dateRange.toString());
+
+		return getStockService.getStockCommentsCountMap(dateRange, subreddit);
+	}
+	
+	
+	@GetMapping("/getFrequentlyMentionedStocksInTitleAndComments")
+	public Map<String, Integer> getFrequentlyMentionedStocksInTitleAndComments(DateRanges dateRange, SubReddit subreddit) {
+		logger.debug("Date range passed in is: " + dateRange.toString());
+		System.out.println("Date range passed in is: " + dateRange.toString());
+
+		return getStockService.getStockTitleAndCommentsMap(dateRange, subreddit);
+	}
+	
 	@GetMapping("/validatesymbol")
 	public Boolean validatesymbol(@RequestParam(name = "symbol", defaultValue = "") String symbol) {
 

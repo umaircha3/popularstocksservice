@@ -218,5 +218,33 @@ public class GetStockService {
 
 
 	}
+
+	public Map<String, Integer> getStockCommentsCountMap(DateRanges dateRange, SubReddit subreddit) {
+		// TODO Auto-generated method stub
+		
+		//this will first have local map with count with aggregated count from pushshift
+		Map<String, Integer> stockFrequencyMap = new HashMap<String, Integer>();
+		// this map will check to see if we have aggregated our results for a particular symbol
+		// we only need to aggregate once for a certain symbol
+		Map<String, Boolean> aggregatedSymbolMap = new HashMap<String, Boolean>();
+		//call pushshift to get comments for last daterange
+//		List<RedditPostDTO> posts = pushShiftAPIClient.callPushShiftAPI(baseSubmissionURL, selectedSubreddit, pushShiftFields,
+//				size, startDate, endDate);
+		// then loop through the comments and validate anything
+		// that matches pattern and store it in a map for possible symbols
+		
+		
+		//validate symbol
+		
+		//
+		
+		
+		return null;
+	}
+
+	public Map<String, Integer> getStockTitleAndCommentsMap(DateRanges dateRange, SubReddit subreddit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
