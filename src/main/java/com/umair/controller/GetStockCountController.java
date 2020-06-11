@@ -1,6 +1,9 @@
 package com.umair.controller;
 
+import java.io.IOException;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +21,7 @@ import com.umair.service.ValidateStockSymbolService;
 import io.micrometer.core.instrument.util.StringUtils;
 
 @RestController
-@RequestMapping("/")
-public class GetPennyStockController {
+public class GetStockCountController {
 
 	@Autowired
 	GetStockService getStockService;
@@ -27,8 +29,13 @@ public class GetPennyStockController {
 	@Autowired
 	ValidateStockSymbolService validateStockSymbolService;
 
-	private static final Logger logger = LoggerFactory.getLogger(GetPennyStockController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GetStockCountController.class);
 
+    @RequestMapping(value = "/")
+    public void redirect(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/swagger-ui.html");
+    }
+	
 	@GetMapping("/getpennystocklist")
 	public Map<String, Integer> getPennyStockList(DateRanges dateRange, SubReddit subreddit) {
 		logger.debug("Date range passed in is: " + dateRange.toString());
