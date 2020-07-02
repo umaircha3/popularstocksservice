@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -65,6 +66,9 @@ public class TDAmeritradeAPIClient {
 			return null;
 		} catch (JsonProcessingException e) {
 			logger.error("JsonProcessingException: " + e.getMessage());
+			return null;
+		} catch (HttpClientErrorException e) {
+			logger.debug("Too many requests to TD API");
 			return null;
 		}
 

@@ -1,5 +1,7 @@
 package com.umair.client;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -22,6 +24,22 @@ public class ValidateStockSymbolClient {
 	//this class will have a method to take the symbol and calls the local validatesymbol service
 	public Boolean callValidation(String symbol) {
 		
+		
+        InetAddress ip;
+        String hostname;
+        try {
+            ip = InetAddress.getLocalHost();
+            hostname = ip.getHostName();
+            System.out.println("Your current IP address : " + ip);
+            System.out.println("Your current Hostname : " + hostname);
+            
+
+ 
+        } catch (UnknownHostException e) {
+ 
+            e.printStackTrace();
+        }
+		
 		//System.out.println("PASSED IN SYMBOL to  boolean is :" + symbol);
 
 		String url = getURI(symbol);
@@ -30,7 +48,7 @@ public class ValidateStockSymbolClient {
 
 		logger.debug("REsponse from boolean is :" + response);
 		try {
-			TimeUnit.MILLISECONDS.sleep(300);
+			TimeUnit.MILLISECONDS.sleep(350);
 		} catch (InterruptedException e) {
 			logger.error("InterruptedException: " + e.getMessage());
 		}
